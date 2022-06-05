@@ -1,9 +1,12 @@
+using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IProductRepository, FakeProductRepository>();
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("ConnectionString")));
+builder.Services.AddTransient<IProductRepository, EFProductRepository>();
 
 var app = builder.Build();
 
@@ -25,3 +28,5 @@ app.MapControllerRoute(
     pattern: "{controller=Product}/{action=List}/{id?}");
 
 app.Run();
+
+SeedData.EnsrurePopulated(app);

@@ -1,6 +1,6 @@
 ﻿namespace SportsStore.Models
 {
-    public class EFProductRepository
+    public class EFProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _dbContext;
         public EFProductRepository(ApplicationDbContext dbContext)
