@@ -72,6 +72,7 @@
                         Category = "Chess",
                         Price = 1200M,
                     });
+                context.SaveChanges();
             }
         }
     }
