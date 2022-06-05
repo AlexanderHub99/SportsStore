@@ -14,9 +14,4 @@ public class ProductController : Controller
     }
 
     public ViewResult List() => View(_productRepository.Products);
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
 }
