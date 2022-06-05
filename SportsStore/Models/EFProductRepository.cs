@@ -3,6 +3,7 @@
     public class EFProductRepository : IProductRepository
     {
         private readonly ApplicationDbContext _dbContext;
+
         public EFProductRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
