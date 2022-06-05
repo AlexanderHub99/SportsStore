@@ -2,13 +2,9 @@
 {
     public static class SeedData
     {
-        public static void EnsrurePopulated(IApplicationBuilder app)
+        public static void EnsrurePopulated(ApplicationDbContext context)
         {
-            ApplicationDbContext context = app.ApplicationServices
-                .GetRequiredService<ApplicationDbContext>();
-            if (!context.Products.Any())
-            {
-                context.Products.AddRange(
+            context.Products.AddRange(
                     new Product
                     {
                         Name = "Kayak",
@@ -76,4 +72,3 @@
             }
         }
     }
-}
