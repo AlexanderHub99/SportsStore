@@ -20,7 +20,6 @@ namespace SportsStore.Test
                 new Product {ProductID = 3, Name = "P3"},
                 new Product {ProductID = 4, Name = "P4"},
                 new Product {ProductID = 5, Name = "P5"},
-                new Product {ProductID = 6, Name = "P6"},
             });
             ProductController controller = new ProductController(mock.Object);
             controller.pageSixe = 3;
@@ -30,7 +29,7 @@ namespace SportsStore.Test
             Product[] productArrey = result.ToArray();
             Assert.True(productArrey.Length == 2);
             Assert.Equal("P4", productArrey[0].Name);
-            Assert.Equal("P4", productArrey[0].Name);
+            Assert.Equal("P5", productArrey[1].Name);
         }
     }
 }
