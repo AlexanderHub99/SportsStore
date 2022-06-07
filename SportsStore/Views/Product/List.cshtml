@@ -1,9 +1,9 @@
-﻿@model IEnumerable<SportsStore.Models.Product>
+﻿@model SportsStore.ViewModels.ProductListViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@foreach (var p in Model)
+@foreach (var p in Model.Products)
 {
     <div>
         <h3>@p.Name</h3>
@@ -11,3 +11,5 @@
         <h4>@p.Price.ToString("c")</h4>
     </div>
 }
+
+<div page-model="@Model.pagingInfo" page-action="List" total-pages="@System.Convert.ToString(Model.pagingInfo.TotalPages)" view-></div>
