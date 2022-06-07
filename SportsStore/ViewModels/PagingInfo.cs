@@ -7,7 +7,7 @@
         
         public int CurrentPage { get;set; }
         
-        public int TotalPage => (int) Math.Ceiling((decimal) TotalItems / InemsPerPage);
+        public int TotalPages => (int) Math.Ceiling((decimal) TotalItems / InemsPerPage);
     }
 }
 
