@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -8,7 +9,7 @@ using SportsStore.ViewModels;
 
 namespace SportsStore.Infrastructure
 {
-    [HtmlTargetElement("div", Attributes = "page-models")]
+    [HtmlTargetElement("div", Attributes = "page-model")]
     public class PageLinkTagHelper : TagHelper
     {
         private IUrlHelperFactory _helperFactory;
@@ -21,21 +22,20 @@ namespace SportsStore.Infrastructure
         [ViewContext]
         [HtmlAttributeNotBound]
         public  ViewContext ViewContext { get; set; }
-        public PagingInfo PageModel { get; set; }
-        public string PagwAction { get; set; }
+        public string TotalPages { get; set; }
+        public string PageAction { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             IUrlHelper urlHelper = _helperFactory.GetUrlHelper(ViewContext);
             TagBuilder result = new TagBuilder("div");
-            for (int i = 1; i <-PageModel.TotalItems; i++)
+            for (int i = 1; i <= Convert.ToInt32(TotalPages); i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(PagwAction, new {page = i});
+                tag.Attributes["href"] = urlHelper.Action(PageAction, new {page = i});
                 tag.InnerHtml.Append(i.ToString());
                 result.InnerHtml.AppendHtml(tag);
             }
-
             output.Content.AppendHtml(result.InnerHtml);
         }
         
