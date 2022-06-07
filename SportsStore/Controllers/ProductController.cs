@@ -13,12 +13,12 @@ namespace SportsStore.Controllers
             _productRepository = logger;
         }
 
-        private readonly int _pageSixe = 4;
+        public int pageSixe = 4;
     
         public ViewResult List(int page = 1) => View(_productRepository.Products
             .OrderBy(p => p.ProductID)
-            .Skip((page -1)*_pageSixe)
-            .Take(_pageSixe));
+            .Skip((page -1)*pageSixe)
+            .Take(pageSixe));
     }
 }
 
