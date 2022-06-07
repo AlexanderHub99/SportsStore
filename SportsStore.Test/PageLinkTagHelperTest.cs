@@ -25,13 +25,8 @@ namespace SportsStore.Test
 
             PageLinkTagHelper helper = new(urlHelperFactory.Object)
             {
-                PageModel = new()
-                {
-                    CurrentPage = 2,
-                    TotalItems = 28,
-                    InemsPerPage = 10,
-                },
-                PagwAction = "Test"
+                TotalPages = "4",
+                PageAction = "Test"
             };
 
             TagHelperContext ctx = new(
