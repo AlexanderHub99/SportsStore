@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
 
@@ -22,6 +23,21 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: null,
+    pattern: "{category}/Page{page:int}",
+    defaults: new { controller = "Product", action = "List"});
+
+app.MapControllerRoute(
+    name: null,
+    pattern: "Page{page:int}",
+    defaults: new { controller = "Product", action = "List", page = 1});
+
+app.MapControllerRoute(
+    name: null,
+    pattern: "category",
+    defaults: new { controller = "Product", action = "List", page = 1});
 
 app.MapControllerRoute(
     name: "default",
