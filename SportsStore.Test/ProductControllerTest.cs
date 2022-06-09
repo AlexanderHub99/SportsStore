@@ -25,7 +25,7 @@ namespace SportsStore.Test
             ProductController controller = new ProductController(mock.Object);
             controller.pageSixe = 3;
 
-            ProductListViewModel? result = controller.List(2).ViewData.Model as ProductListViewModel;
+            ProductListViewModel? result = controller.List(null,2).ViewData.Model as ProductListViewModel;
 
             Product[] productArrey = result.Products.ToArray();
             Assert.True(productArrey.Length == 2);
@@ -47,7 +47,7 @@ namespace SportsStore.Test
             ProductController controller = new ProductController(mock.Object);
             controller.pageSixe = 3;
 
-            ProductListViewModel? result = controller.List(2).ViewData.Model as ProductListViewModel;
+            ProductListViewModel? result = controller.List(null,2).ViewData.Model as ProductListViewModel;
 
             PagingInfo productArrey = result.pagingInfo;
             Assert.Equal(2, productArrey.CurrentPage);
