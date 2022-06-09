@@ -1,0 +1,13 @@
+﻿@model Product
+
+<div class="card-deck">
+    <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <h4 class="card-title">@Model.Category</h4>
+            <p class="card-text">@Model.Description</p>
+            <p class="card-text"><small class="text-muted">@Model.Price.ToString("c")</small></p>
+        </div>
+    </div>
+</div>

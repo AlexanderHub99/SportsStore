@@ -2,19 +2,9 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-@foreach (var p in Model.Products)
+@foreach (Product p in Model.Products)
 {
-    <div class="card-deck">
-        <div class="card">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@p.Name</h5>
-                    <h4 class="card-title">@p.Category</h4>
-                    <p class="card-text">@p.Description</p>
-                    <p class="card-text"><small class="text-muted">@p.Price.ToString("c")</small></p>
-                </div>
-            </div>
-    </div>
+    @await Html.PartialAsync("ProductSummary",p)
 }
 <div page-model="@Model.pagingInfo" page-action="List" total-pages="@System.Convert.ToString(Model.pagingInfo.TotalPages)" 
     page-classes-enabled="true" page-class="btn" page-class-normal="btn-default" page-class-selected="btn-primary" class="btn-group pull-right"></div>
