@@ -22,16 +22,18 @@ namespace SportsStore.Infrastructure
         [ViewContext]
         [HtmlAttributeNotBound]
         public  ViewContext ViewContext { get; set; }
-        public string TotalPages { get; set; }
         public string CurrentPage { get; set; }
+        public string TotalPages { get; set; }
         public string PageAction { get; set; }
-        
-        
+
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        public Dictionary<string, object> PageUrlValues { get; set; } = new Dictionary<string, object>();
+
         public bool  PageClassesEnabled { get; set; }
-        public string PageClass { get; set; }
-        public string PageClassNormal { get; set; }
         public string PageClassSelected { get; set; }
-        
+        public string PageClassNormal { get; set; }
+        public string PageClass { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             IUrlHelper urlHelper = _helperFactory.GetUrlHelper(ViewContext);
@@ -39,7 +41,8 @@ namespace SportsStore.Infrastructure
             for (int i = 1; i <= Convert.ToInt32(TotalPages); i++)
             {
                 TagBuilder tag = new TagBuilder("a");
-                tag.Attributes["href"] = urlHelper.Action(PageAction, new {page = i});
+                PageUrlValues["page"] = i;
+                tag.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
                 if (PageClassesEnabled)
                 {
                     tag.AddCssClass(PageClass);
