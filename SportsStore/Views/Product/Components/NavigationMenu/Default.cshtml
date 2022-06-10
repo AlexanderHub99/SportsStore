@@ -1,2 +1,22 @@
 ﻿@model System.Linq.IOrderedEnumerable<string>
-
+<ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+        <a class="nav-link active" asp-action="List" asp-controller="Product" asp-route-category="">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Home
+        </a>
+    </li>
+    <li >
+        <a class="nav-link text-white">Категории:</a>
+    </li>
+    @foreach (string category in Model)
+    {
+        <li>
+            <a class="nav-link text-white" asp-action="List" asp-controller="Product" asp-route-category="@category"
+               asp-route-page="1">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                @category
+            </a>
+        </li>
+    }
+</ul>
