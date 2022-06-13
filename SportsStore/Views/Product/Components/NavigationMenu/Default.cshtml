@@ -12,7 +12,8 @@
     @foreach (string category in Model)
     {
         <li>
-            <a class="nav-link text-white" asp-action="List" asp-controller="Product" asp-route-category="@category"
+            <a class="nav-link text-white" style = "@(category == ViewBag.SelectedCategory ? "background : #73A353; margin: 5px;": "background : #000 ; margin: 5px;")"
+               asp-action="List" asp-controller="Product" asp-route-category="@category"
                asp-route-page="1">
                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                 @category

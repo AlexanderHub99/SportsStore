@@ -15,10 +15,15 @@ namespace SportsStore.Components
 
         //Кудато потерялася мето файл :(                                                                    :todo
         // ReSharper disable once Mvc.ViewComponentViewNotResolved                                          :todo
-        public IViewComponentResult Invoke() => View(_productRepository.Products
-            .Select(x => x.Category)
-            .Distinct()
-            .OrderBy(x => x));
+        public IViewComponentResult Invoke()
+        {
+            
+            ViewBag.SelectedCategory = RouteData?.Values["category"] ?? "";
+            return View(_productRepository.Products
+                     .Select(x => x.Category)
+                     .Distinct()
+                     .OrderBy(x => x));
+        }
     }
 }
 
