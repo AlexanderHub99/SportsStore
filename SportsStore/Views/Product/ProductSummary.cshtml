@@ -2,12 +2,24 @@
 
 <div class="card-deck">
     <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="Imeg/1407981.gif" style="width:120px;position: absolute;right: 0;" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">@Model.Name</h5>
             <h4 class="card-title">@Model.Category</h4>
             <p class="card-text">@Model.Description</p>
-            <p class="card-text"><small class="text-muted">@Model.Price.ToString("c")</small></p>
+            <p class="card-text">
+                <small class="text-muted">@Model.Price.ToString("c")</small>
+            </p>
+            <form style="display: flex; justify-content: flex-end;" id="@Model.ProductID" asp-action="AddToCart" asp-controller="Cart" method="post">
+                <input type="hidden" asp-for="ProductID"/>
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+                <span class="lead">
+                    @Model.Description
+                    <button type="submit" class="btn btn-success dtn-sm pull-right">
+                        Add To Cart
+                    </button>
+                </span>
+            </form>
         </div>
     </div>
 </div>
