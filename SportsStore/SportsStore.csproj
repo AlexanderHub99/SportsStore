@@ -8,12 +8,32 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Shared\Components\NavigationMenu\Default.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\Product\List.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\Product\ProductSummary.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Product\Components\NavigationMenu\Default.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Components\NavigationMenu\Default.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\Product\List.cshtml" />
+      <AdditionalFiles Include="Views\Product\ProductSummary.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Models\ViewModels" />
+      <Folder Include="Views\Cart" />
     </ItemGroup>
 
 </Project>
