@@ -8,14 +8,16 @@
     }
     public class Cart
     {
-        public List<CartLine> lineCollection = new List<CartLine>();
+        private readonly List<CartLine> _lineCollection = new List<CartLine>();
 
-        public virtual void AddItem(Product product, int quantity)
+        public virtual void AddItem(Product? product, int quantity)
         {
-            CartLine line = lineCollection.Where(p => p.Product.ProductID == product.ProductID).FirstOrDefault()!;
+            CartLine line = _lineCollection
+                .Where(p => p.Product.ProductID == product.ProductID)
+                .FirstOrDefault();
             if (line == null)
             {
-                lineCollection.Add(new CartLine
+                _lineCollection.Add(new CartLine
                 {
                     Product = product,
                     Quantity = quantity
@@ -27,13 +29,13 @@
             }
         }
 
-        public virtual void RemoveLine(Product product) =>
-            lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
+        public virtual void RemoveLine(Product? product) =>
+            _lineCollection.RemoveAll(l => l.Product.ProductID == product.ProductID);
 
-        public virtual decimal ComputeTotalValue() => lineCollection.Sum(e => e.Product.Price * e.Quantity);
+        public virtual decimal ComputeTotalValue() => _lineCollection.Sum(e => e.Product.Price * e.Quantity);
 
-        public virtual void Clear() => lineCollection.Clear();
+        public virtual void Clear() => _lineCollection.Clear();
 
-        public virtual IEnumerable<CartLine> Lines => lineCollection;
+        public virtual IEnumerable<CartLine> Lines => _lineCollection;
     }
 }
