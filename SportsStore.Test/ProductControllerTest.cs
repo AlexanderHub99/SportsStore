@@ -51,7 +51,7 @@ namespace SportsStore.Test
 
             ProductListViewModel? result = controller.List(null,2).ViewData.Model as ProductListViewModel;
 
-            PagingInfo productArrey = result.pagingInfo;
+            PagingInfo? productArrey = result.PagingInfo;
             Assert.Equal(2, productArrey.CurrentPage);
             Assert.Equal(3, productArrey.InemsPerPage);
             Assert.Equal(5, productArrey.TotalItems);
@@ -96,10 +96,10 @@ namespace SportsStore.Test
 
             Func<ViewResult, ProductListViewModel?> getMode = result => result?.ViewData?.Model as ProductListViewModel;
 
-            int? res1 = getMode(controller.List(("1")))?.pagingInfo.TotalItems;
-            int? res2 = getMode(controller.List(("2")))?.pagingInfo.TotalItems;
-            int? res3 = getMode(controller.List(("3")))?.pagingInfo.TotalItems;
-            int? resAll = getMode(controller.List((null!)))?.pagingInfo.TotalItems;
+            int? res1 = getMode(controller.List(("1")))?.PagingInfo.TotalItems;
+            int? res2 = getMode(controller.List(("2")))?.PagingInfo.TotalItems;
+            int? res3 = getMode(controller.List(("3")))?.PagingInfo.TotalItems;
+            int? resAll = getMode(controller.List((null!)))?.PagingInfo.TotalItems;
             
             Assert.Equal(2, res1);
             Assert.Equal(2, res2);
