@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 using SportsStore.Controllers;
 using SportsStore.Models;
@@ -76,6 +78,33 @@ namespace SportsStore.Test
             Assert.Equal(2, result.Length);
             Assert.True(result[0].Name == "P3" && result[0].Category == "2");
             Assert.True(result[1].Name == "P5" && result[1].Category == "2");
+        }
+        [Fact]
+        public void Generate_Category_Specific_Product_Count()
+        {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product {ProductID = 1, Name = "P1", Category = "1"},
+                new Product {ProductID = 2, Name = "P2", Category = "1"},
+                new Product {ProductID = 3, Name = "P3", Category = "2"},
+                new Product {ProductID = 4, Name = "P4", Category = "3"},
+                new Product {ProductID = 5, Name = "P5", Category = "2"},
+            });
+            ProductController controller = new ProductController(mock.Object);
+            controller.pageSixe = 3;
+
+            Func<ViewResult, ProductListViewModel?> getMode = result => result?.ViewData?.Model as ProductListViewModel;
+
+            int? res1 = getMode(controller.List(("1")))?.pagingInfo.TotalItems;
+            int? res2 = getMode(controller.List(("2")))?.pagingInfo.TotalItems;
+            int? res3 = getMode(controller.List(("3")))?.pagingInfo.TotalItems;
+            int? resAll = getMode(controller.List((null!)))?.pagingInfo.TotalItems;
+            
+            Assert.Equal(2, res1);
+            Assert.Equal(2, res2);
+            Assert.Equal(1, res3);
+            Assert.Equal(5, resAll);
         }
     }
 }
