@@ -25,7 +25,7 @@ namespace SportsStore.Controllers
                     .OrderBy(p => p.ProductID)
                     .Skip((page - 1) * pageSixe)
                     .Take(pageSixe),
-                pagingInfo = new PagingInfo
+                PagingInfo = new PagingInfo
                 {
                     CurrentPage = page, InemsPerPage = pageSixe, TotalItems = category == null ? _productRepository.Products.Count():
                         _productRepository.Products.Count(e => e.Category == category)
