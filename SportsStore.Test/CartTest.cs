@@ -9,8 +9,8 @@ namespace SportsStore.Test
         [Fact]
         public void Can_Add_New_Lines()
         {
-            Product p1 = new Product {ProductID = 1, Name = "P1"};
-            Product p2 = new Product {ProductID = 2, Name = "P2"};
+            Product? p1 = new Product {ProductID = 1, Name = "P1"};
+            Product? p2 = new Product {ProductID = 2, Name = "P2"};
 
             Cart target = new Cart();
 
@@ -26,8 +26,8 @@ namespace SportsStore.Test
         [Fact]
         public void Can_Add_Quantity_For_Existing_Lines()
         {
-            Product p1 = new Product {ProductID = 1, Name = "P1"};
-            Product p2 = new Product {ProductID = 2, Name = "P2"};
+            Product? p1 = new Product {ProductID = 1, Name = "P1"};
+            Product? p2 = new Product {ProductID = 2, Name = "P2"};
 
             Cart target = new Cart();
 
@@ -45,9 +45,9 @@ namespace SportsStore.Test
         [Fact]
         public void Can_Remuve_Lien()
         {
-            Product p1 = new Product {ProductID = 1, Name = "P1"};
-            Product p2 = new Product {ProductID = 2, Name = "P2"};
-            Product p3 = new Product {ProductID = 3, Name = "P3"};
+            Product? p1 = new Product {ProductID = 1, Name = "P1"};
+            Product? p2 = new Product {ProductID = 2, Name = "P2"};
+            Product? p3 = new Product {ProductID = 3, Name = "P3"};
 
             Cart target = new Cart();
             
@@ -65,9 +65,9 @@ namespace SportsStore.Test
         [Fact]
         public void Calculate_Cart_Totel()
         {
-            Product p1 = new Product {ProductID = 1, Name = "P1", Price = 10M};
-            Product p2 = new Product {ProductID = 2, Name = "P2", Price = 10M};
-            Product p3 = new Product {ProductID = 3, Name = "P3", Price = 10M};
+            Product? p1 = new Product {ProductID = 1, Name = "P1", Price = 10M};
+            Product? p2 = new Product {ProductID = 2, Name = "P2", Price = 10M};
+            Product? p3 = new Product {ProductID = 3, Name = "P3", Price = 10M};
 
             Cart target = new Cart();
             
@@ -83,9 +83,9 @@ namespace SportsStore.Test
         [Fact]
         public void Can_Cart_Condents()
         {
-            Product p1 = new Product {ProductID = 1, Name = "P1", Price = 10M};
-            Product p2 = new Product {ProductID = 2, Name = "P2", Price = 10M};
-            Product p3 = new Product {ProductID = 3, Name = "P3", Price = 10M};
+            Product? p1 = new Product {ProductID = 1, Name = "P1", Price = 10M};
+            Product? p2 = new Product {ProductID = 2, Name = "P2", Price = 10M};
+            Product? p3 = new Product {ProductID = 3, Name = "P3", Price = 10M};
 
             Cart target = new Cart();
             
