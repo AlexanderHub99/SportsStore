@@ -13,6 +13,6 @@
             }
         }
 
-        public IEnumerable<Product> Products => _dbContext.Products;
+        public IEnumerable<Product?> Products => _dbContext.Products;
     }
 }

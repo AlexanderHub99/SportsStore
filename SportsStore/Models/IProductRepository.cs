@@ -2,5 +2,5 @@
 
 public interface IProductRepository
 {
-    IEnumerable<Product> Products { get; }
+    IEnumerable<Product?> Products { get; }
 }

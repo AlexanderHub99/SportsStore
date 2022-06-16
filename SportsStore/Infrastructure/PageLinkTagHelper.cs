@@ -21,18 +21,19 @@ namespace SportsStore.Infrastructure
         
         [ViewContext]
         [HtmlAttributeNotBound]
-        public  ViewContext ViewContext { get; set; }
-        public string CurrentPage { get; set; }
-        public string TotalPages { get; set; }
-        public string PageAction { get; set; }
+        public  ViewContext ViewContext { get; set; } = null!;
+
+        public string CurrentPage { get; set; } = null!;
+        public string TotalPages { get; set; } = null!;
+        public string PageAction { get; set; } = null!;
 
         [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
         public Dictionary<string, object> PageUrlValues { get; set; } = new Dictionary<string, object>();
 
         public bool  PageClassesEnabled { get; set; }
-        public string PageClassSelected { get; set; }
-        public string PageClassNormal { get; set; }
-        public string PageClass { get; set; }
+        public string PageClassSelected { get; set; } = null!;
+        public string PageClassNormal { get; set; } = null!;
+        public string PageClass { get; set; } = null!;
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
