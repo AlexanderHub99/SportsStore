@@ -7,12 +7,12 @@ namespace SportsStore.Models
     {
         public static Cart GetCart(IServiceProvider service)
         {
-            ISession? session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext?.Session;
+            ISession session = service.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             SessionCart cart = session?.GetJson<SessionCart>("Cart") ?? new SessionCart();
             cart.Session = session;
             return cart;
         }
-        [JsonIgnore] public ISession Session { get; set; }
+        [JsonIgnore] private ISession Session { get; set; }
 
         public override void AddItem(Product? product, int quantity)
         {
